@@ -40,7 +40,7 @@ with tf.Session(config=sess_config) as sess:
     output = tf.cast(output, tf.uint8)
 
     # load pretrained model
-    vars_list = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
+    vars_list = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES);print('Loading Model from : ',config.load_model_dir)
     assign_ops = list(map(lambda x: tf.assign(x, tf.contrib.framework.load_variable(config.load_model_dir, x.name)),
                           vars_list))
     sess.run(assign_ops)
